@@ -1,12 +1,12 @@
-import { ReactElement, createContext, useCallback, useEffect, useState } from 'react'
+import { createContext, useCallback, useEffect, useState } from 'react'
 import JsonNode from './json-node'
-import type { Collapsed, CustomizeCollapseStringUI, CustomizeNode, DisplaySize, Editable } from '../types'
+import type { AddProps, Collapsed, CustomizeCollapseStringUI, CustomizeNode, DeleteProps, DisplaySize, Editable, EditProps } from '../types'
 import { stringifyForCopying } from '../utils'
 
-type OnEdit = (params: { newValue: any; oldValue: any; depth: number; src: any; indexOrName: string | number; parentType: 'object' | 'array' | null }) => void
-type OnDelete = (params: { value: any; indexOrName: string | number; depth: number; src: any; parentType: 'object' | 'array' | null }) => void
-type OnAdd = (params: { indexOrName: string | number; depth: number; src: any; parentType: 'object' | 'array' }) => void
-type OnChange = (params: {
+export type OnEdit = (params: EditProps) => void
+export type OnDelete = (params: DeleteProps) => void
+export type OnAdd = (params: AddProps) => void
+export type OnChange = (params: {
 	indexOrName: string | number
 	depth: number
 	src: any
@@ -57,8 +57,8 @@ export const JsonViewContext = createContext({
 		| React.Component<{ className: string; style: React.CSSProperties }>
 		| undefined,
 	EditComponent: undefined as
-	| React.FC<{ onClick: (event: React.MouseEvent) => void; className: string }>
-	| React.Component<{ onClick: (event: React.MouseEvent) => void; className: string }>
+	| React.FC<{ onClick: (event: React.MouseEvent) => void; className: string, editCustom: (newValue: string) => void, value: string | null }>
+	| React.Component<{ onClick: (event: React.MouseEvent) => void; className: string, editCustom: (newValue: string) => void, value: string | null }>
 	| undefined,	
 	CancelComponent: undefined as
 	| React.FC<{ onClick: (event: React.MouseEvent) => void; className: string; style: React.CSSProperties }>
@@ -116,8 +116,8 @@ export interface JsonViewProps {
 	CopiedComponent?: React.FC<{ className: string; style: React.CSSProperties }> | React.Component<{ className: string; style: React.CSSProperties }>
 
 	EditComponent?:
-	| React.FC<{ onClick: (event: React.MouseEvent) => void; className: string }>
-	| React.Component<{ onClick: (event: React.MouseEvent) => void; className: string }>
+	| React.FC<{ onClick: (event: React.MouseEvent) => void; className: string, editCustom: (newValue: string) => void, value: string | null }>
+	| React.Component<{ onClick: (event: React.MouseEvent) => void; className: string, editCustom: (newValue: string) => void, value: string | null }>
 
 	CancelComponent?:
 	| React.FC<{ onClick: (event: React.MouseEvent) => void; className: string; style: React.CSSProperties }>
@@ -241,7 +241,7 @@ export default function JsonView({
 						if (onChange) onChange({ type: 'edit', depth: 1, src, indexOrName: indexOrName, parentType: null })
 					}}
 					deleteHandle={() => {
-						setSrc(undefined)
+						setSrc({})
 						if (onDelete)
 							onDelete({
 								value: src,

@@ -47,6 +47,10 @@ export default function JsonNode({ node, depth, deleteHandle: _deleteHandle, ind
 		}
 	}
 
+    const editCustom = useCallback((newValue: string) => {
+        if (editHandle) editHandle(indexOrName!, newValue, node);
+    }, [editHandle, indexOrName, node]);
+
 	if (Array.isArray(node) || isObject(node)) {
 		return (
 			<ObjectNode
@@ -157,7 +161,7 @@ export default function JsonNode({ node, depth, deleteHandle: _deleteHandle, ind
 					customEdit(customReturn as CustomizeOptions | undefined) &&
 					editHandle &&
 					(typeof EditComponent === 'function' ? (
-						<EditComponent className='json-view--edit' onClick={edit} />
+						<EditComponent value={node} editCustom={editCustom} className='json-view--edit' onClick={edit} />
 					) : (
 						<EditSVG className='json-view--edit' onClick={edit} />
 					))}
