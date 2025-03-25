@@ -1,3 +1,4 @@
+/// <reference types="react" />
 export declare type Collapsed = undefined | number | boolean | ((params: {
     node: Record<string, any> | Array<any>;
     indexOrName: number | string | undefined;

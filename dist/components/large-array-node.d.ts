@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import type { CustomizeOptions } from '../types';
 interface Props {
     originNode: Array<any>;
@@ -10,5 +11,5 @@ interface Props {
     parent?: Record<string, any> | Array<any>;
     parentPath: string[];
 }
-export default function LargeArrayNode({ originNode, node, depth, index, deleteHandle: _deleteSelf, customOptions, startIndex, parent, parentPath }: Props): import("react/jsx-runtime").JSX.Element;
+export default function LargeArrayNode({ originNode, node, depth, index, deleteHandle: _deleteSelf, customOptions, startIndex, parent, parentPath }: Props): JSX.Element;
 export {};

@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import type { CustomizeOptions } from '../types';
 interface Props {
     node: Record<string, any> | Array<any>;
@@ -8,5 +9,5 @@ interface Props {
     parent?: Record<string, any> | Array<any>;
     parentPath: string[];
 }
-export default function ObjectNode({ node, depth, indexOrName, deleteHandle: _deleteSelf, customOptions, parent, parentPath }: Props): import("react/jsx-runtime").JSX.Element;
+export default function ObjectNode({ node, depth, indexOrName, deleteHandle: _deleteSelf, customOptions, parent, parentPath }: Props): JSX.Element;
 export {};

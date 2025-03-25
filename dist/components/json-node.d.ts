@@ -1,3 +1,4 @@
+/// <reference types="react" />
 interface Props {
     node: any;
     depth: number;
@@ -7,5 +8,5 @@ interface Props {
     parent?: Record<string, any> | Array<any>;
     parentPath: string[];
 }
-export default function JsonNode({ node, depth, deleteHandle: _deleteHandle, indexOrName, parent, editHandle, parentPath }: Props): import("react/jsx-runtime").JSX.Element;
+export default function JsonNode({ node, depth, deleteHandle: _deleteHandle, indexOrName, parent, editHandle, parentPath }: Props): JSX.Element;
 export {};

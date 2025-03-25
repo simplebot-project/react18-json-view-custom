@@ -48,9 +48,17 @@ export default function JsonNode({ node, depth, deleteHandle: _deleteHandle, ind
 		}
 	}
 
-    const editCustom = useCallback((newValue: string) => {
-        if (editHandle) editHandle(indexOrName!, newValue, node, parentPath);
-    }, [editHandle, indexOrName, node, parentPath]);
+    const editCustom = (newValue: string) => {
+		try {
+			const parsedValue = JSON.parse(newValue)
+
+			if (editHandle) editHandle(indexOrName!, parsedValue, node, parentPath)
+		} catch (e) {
+			const type = typeof node
+			const trimmedStringValue = resolveEvalFailedNewValue(type, newValue)
+			if (editHandle) editHandle(indexOrName!, trimmedStringValue, node, parentPath)
+		}
+    }
 
 	if (Array.isArray(node) || isObject(node)) {
 		return (
