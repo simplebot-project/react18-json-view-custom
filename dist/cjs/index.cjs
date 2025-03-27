@@ -895,7 +895,7 @@ function JsonNode({ node, depth, deleteHandle: _deleteHandle, indexOrName, paren
                     editableEdit(editable) &&
                     customEdit(customReturn) &&
                     editHandle &&
-                    (typeof EditComponent === 'function' ? (jsxRuntime.jsx(EditComponent, { value: node, editCustom: editCustom, className: 'json-view--edit', onClick: edit })) : (jsxRuntime.jsx(SvgEdit, { className: 'json-view--edit', onClick: edit }))), !isEditing && editableDelete(editable) && customDelete(customReturn) && _deleteHandle && (jsxRuntime.jsx(SvgTrash, { className: 'json-view--edit', onClick: () => setDeleting(true) })), typeof CustomOperation === 'function' ? jsxRuntime.jsx(CustomOperation, { node: node }) : null] }));
+                    (typeof EditComponent === 'function' ? (jsxRuntime.jsx(EditComponent, { keyObject: currentPath, value: node, editCustom: editCustom, className: 'json-view--edit', onClick: edit })) : (jsxRuntime.jsx(SvgEdit, { className: 'json-view--edit', onClick: edit }))), !isEditing && editableDelete(editable) && customDelete(customReturn) && _deleteHandle && (jsxRuntime.jsx(SvgTrash, { className: 'json-view--edit', onClick: () => setDeleting(true) })), typeof CustomOperation === 'function' ? jsxRuntime.jsx(CustomOperation, { node: node }) : null] }));
         let className = 'json-view--string';
         switch (type) {
             case 'number':

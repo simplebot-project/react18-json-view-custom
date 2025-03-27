@@ -177,7 +177,7 @@ export default function JsonNode({ node, depth, deleteHandle: _deleteHandle, ind
 					customEdit(customReturn as CustomizeOptions | undefined) &&
 					editHandle &&
 					(typeof EditComponent === 'function' ? (
-						<EditComponent value={node} editCustom={editCustom} className='json-view--edit' onClick={edit} />
+						<EditComponent keyObject={currentPath} value={node} editCustom={editCustom} className='json-view--edit' onClick={edit} />
 					) : (
 						<EditSVG className='json-view--edit' onClick={edit} />
 					))}

@@ -80,11 +80,13 @@ export declare const JsonViewContext: import("react").Context<{
         className: string;
         editCustom: (newValue: string) => void;
         value: string | null;
+        keyObject: string[];
     }> | import("react").Component<{
         onClick: (event: React.MouseEvent) => void;
         className: string;
         editCustom: (newValue: string) => void;
         value: string | null;
+        keyObject: string[];
     }, {}, any> | undefined;
     CancelComponent: import("react").FC<{
         onClick: (event: React.MouseEvent) => void;
@@ -154,11 +156,13 @@ export interface JsonViewProps {
         className: string;
         editCustom: (newValue: string) => void;
         value: string | null;
+        keyObject: string[];
     }> | React.Component<{
         onClick: (event: React.MouseEvent) => void;
         className: string;
         editCustom: (newValue: string) => void;
         value: string | null;
+        keyObject: string[];
     }>;
     CancelComponent?: React.FC<{
         onClick: (event: React.MouseEvent) => void;

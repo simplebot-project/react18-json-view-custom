@@ -873,7 +873,7 @@ function JsonNode({ node, depth, deleteHandle: _deleteHandle, indexOrName, paren
                     editableEdit(editable) &&
                     customEdit(customReturn) &&
                     editHandle &&
-                    (typeof EditComponent === 'function' ? (jsx(EditComponent, { value: node, editCustom: editCustom, className: 'json-view--edit', onClick: edit })) : (jsx(SvgEdit, { className: 'json-view--edit', onClick: edit }))), !isEditing && editableDelete(editable) && customDelete(customReturn) && _deleteHandle && (jsx(SvgTrash, { className: 'json-view--edit', onClick: () => setDeleting(true) })), typeof CustomOperation === 'function' ? jsx(CustomOperation, { node: node }) : null] }));
+                    (typeof EditComponent === 'function' ? (jsx(EditComponent, { keyObject: currentPath, value: node, editCustom: editCustom, className: 'json-view--edit', onClick: edit })) : (jsx(SvgEdit, { className: 'json-view--edit', onClick: edit }))), !isEditing && editableDelete(editable) && customDelete(customReturn) && _deleteHandle && (jsx(SvgTrash, { className: 'json-view--edit', onClick: () => setDeleting(true) })), typeof CustomOperation === 'function' ? jsx(CustomOperation, { node: node }) : null] }));
         let className = 'json-view--string';
         switch (type) {
             case 'number':

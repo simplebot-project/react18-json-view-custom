@@ -73,8 +73,8 @@ export const JsonViewContext = createContext({
 		| React.Component<{ className: string; style: React.CSSProperties }>
 		| undefined,
 	EditComponent: undefined as
-	| React.FC<{ onClick: (event: React.MouseEvent) => void; className: string, editCustom: (newValue: string) => void, value: string | null }>
-	| React.Component<{ onClick: (event: React.MouseEvent) => void; className: string, editCustom: (newValue: string) => void, value: string | null }>
+	| React.FC<{ onClick: (event: React.MouseEvent) => void; className: string, editCustom: (newValue: string) => void, value: string | null, keyObject: string[] }>
+	| React.Component<{ onClick: (event: React.MouseEvent) => void; className: string, editCustom: (newValue: string) => void, value: string | null, keyObject: string[] }>
 	| undefined,	
 	CancelComponent: undefined as
 		| React.FC<{ onClick: (event: React.MouseEvent) => void; className: string; style: React.CSSProperties }>
@@ -129,8 +129,8 @@ export interface JsonViewProps {
 	CopiedComponent?: React.FC<{ className: string; style: React.CSSProperties }> | React.Component<{ className: string; style: React.CSSProperties }>
 
 	EditComponent?:
-	| React.FC<{ onClick: (event: React.MouseEvent) => void; className: string, editCustom: (newValue: string) => void, value: string | null }>
-	| React.Component<{ onClick: (event: React.MouseEvent) => void; className: string, editCustom: (newValue: string) => void, value: string | null }>
+	| React.FC<{ onClick: (event: React.MouseEvent) => void; className: string, editCustom: (newValue: string) => void, value: string | null, keyObject: string[] }>
+	| React.Component<{ onClick: (event: React.MouseEvent) => void; className: string, editCustom: (newValue: string) => void, value: string | null, keyObject: string[] }>
 
 	CancelComponent?:
 		| React.FC<{ onClick: (event: React.MouseEvent) => void; className: string; style: React.CSSProperties }>
