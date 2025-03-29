@@ -798,8 +798,9 @@ function JsonNode({ node, depth, deleteHandle: _deleteHandle, indexOrName, paren
         if (React.isValidElement(customReturn))
             return customReturn;
         else if (isReactComponent(customReturn)) {
+            const currentPath = typeof indexOrName !== 'undefined' ? [...parentPath, String(indexOrName)] : parentPath;
             const CustomComponent = customReturn;
-            return jsxRuntime.jsx(CustomComponent, { node: node, depth: depth, indexOrName: indexOrName });
+            return jsxRuntime.jsx(CustomComponent, { keyObject: currentPath, node: node, depth: depth, indexOrName: indexOrName });
         }
     }
     const editCustom = (newValue) => {

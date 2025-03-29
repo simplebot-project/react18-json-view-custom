@@ -46,6 +46,7 @@ export type DeleteProps = {
     depth: number;
     src: any;
     parentType: 'object' | 'array' | null;
+    keyObject: string[];
 };
 export type NodeMeta = {
     depth: number;
